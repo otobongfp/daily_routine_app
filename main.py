@@ -3,7 +3,7 @@ print("A TODO APPLICATION")
 todos = []
 
 while True:
-    text = input("Select an action: ADD, SHOW, EDIT, DELETE or EXIT application -----> ")
+    text = input("Select an action: ADD, SHOW, EDIT, COMPLETED or EXIT application -----> ")
     text = text.strip().lower()
     match text:
         case "add":
@@ -19,10 +19,11 @@ while True:
             new_todo = input("type edit here: ")
             new_todo = new_todo.title()
             todos[edit_value] = new_todo
-        case "delete":
-            del_value = int(input(f"choose the position number 1 - {len(todos)} to delete: "))
-            del_value = del_value - 1
-            todos.pop(del_value)
+        case "completed":
+            print("CHOOSE A TASK THAT HAS BEEN COMPLETED")
+            completed_value = int(input(f"choose the position number 1 - {len(todos)} to delete: "))
+            completed_value = completed_value - 1
+            todos.pop(completed_value)
         case "exit":
             break
 print("Thanks for using the App")

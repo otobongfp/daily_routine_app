@@ -7,9 +7,12 @@ while True:
     text = text.strip().lower()
     match text:
         case "add":
-            todo = input("Add a new task --> ")
+            todo = input("Add a new task --> ") + "\n"
             todo = todo.title()
             todos.append(todo)
+            # To write the todos to a file we use the following line below; w means write, r means read
+            file = open('todos.txt', 'w')
+            file.writelines(todos)
         case "show":
             for index, item in enumerate(todos):
                 print(f'{index + 1}. {item}')

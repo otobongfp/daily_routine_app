@@ -1,4 +1,6 @@
 # Some Python
+
+from datetime import datetime
 print("A TODO APPLICATION")
 
 while True:
@@ -6,17 +8,20 @@ while True:
     text = text.strip().lower()
     match text:
         case "add":
-            todo = input("Add a new task ---> ") + "\n"
+            mood = input("On scale of 1 - 10 what's your mood?: ") + "\n"
+            journal = input("Write some new thoughts ---> ")
             # convert input to lower, then make it titled
-            todo.title()
+            journal = journal.title()
+            date = datetime.today().strftime('%Y-%m-%d')
+            print(f"today's date is {date}")
+
+            with open(f'./journals/{date}.txt', 'w') as file:
+                file.write(f'Your Mood: {mood}\n')
+                file.write(journal)
             # Read the txt file and then append new text
-            with open('todos.txt', 'r') as file:
-                todos = file.readlines()
-                todos.append(todo)
-            # Add write functionality
-            file = open('todos.txt', 'w')
-            file.writelines(todos)
-            file.close()
+            # with open('todos.txt', 'r') as file:
+            #     todos = file.readlines()
+            #     todos.append(todo)
         case "show":
             # Below is a list comprehension that strips the extra line
             # todos = [item.strip('\n') for item in todos]
